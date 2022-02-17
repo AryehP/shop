@@ -1,18 +1,24 @@
-import React from 'react';
+import React from 'react'
 
-function Proudact({id,title,image,price,description,category}) {
-  return (
-    <div className='proudact'>
-
-      <div className='imageContainer'>
+function Proudact({
+    id,
+    title,
+    price,
+    category,
+    description,
+    image,
+  }) {
+    return (
+      <div className='product'>
+        <div className='imageContainer'>
           <img className='image' src={image} />
         </div>
         <label className='category'>{category}</label>
         <h3>{title}</h3>
         <p>{description}</p>
-        <button>{price}</button>
+        <button>${price}</button>
+      </div>
+    );
+  }
 
-  </div>);
-}
-
-export default Proudact;
+export default Proudact

@@ -1,27 +1,37 @@
 import './App.css';
-import Proudact from './Proudact';
-import { useEffect , useState} from 'react';
+import Proudacts from './Proudacts';
+import { useEffect , useState, createContext} from 'react';
+import Categoris from './Categoris';
+
+export const cartCount = createContext({});
 
 function App() {
 
+  
   const [proudacts, setProudacts] = useState([]);
+  const [choseCategory, setChoseCategory] = useState('all');
+  
 
    useEffect(() => {
-     fetch('http://localhost:3001')
+     fetch('/api/products')
      .then(response => response.json())
      .then(data => setProudacts(data));
    }, []);
 
+   
+  
   return (
+    <cartCount.Provider value={{items:{7:2}}}>
     <div className="App">
-      {proudacts.map(product => {
-          return ( 
-          <Proudact {...product}/>
-          );
-      })}
 
+      <Categoris currentCategory={choseCategory} onChange={setChoseCategory}/>
+
+      <Proudacts  proudacts = {proudacts} category = {choseCategory}/>
+          
+      
       
     </div>
+    </cartCount.Provider>
   );
 }
 
