@@ -2,6 +2,7 @@ import './App.css';
 import Proudacts from './Proudacts';
 import { useEffect , useState, createContext} from 'react';
 import Categoris from './Categoris';
+import { CartProvider } from './CartContext';
 
 export const cartCount = createContext({});
 
@@ -22,16 +23,17 @@ function App() {
   
   return (
     <cartCount.Provider value={{items:{7:2}}}>
-    <div className="App">
+    <CartProvider>
+      <div className="App">
 
-      <Categoris currentCategory={choseCategory} onChange={setChoseCategory}/>
+        <Categoris currentCategory={choseCategory} onChange={setChoseCategory}/>
 
-      <Proudacts  proudacts = {proudacts} category = {choseCategory}/>
-          
-      
-      
-    </div>
+        <Proudacts  proudacts = {proudacts} category = {choseCategory}/>
+       
+      </div>
+    </CartProvider>
     </cartCount.Provider>
+    
   );
 }
 

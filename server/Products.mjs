@@ -7,7 +7,7 @@ export const proudactsRouter = Router();
 
 
 proudactsRouter.get('/',(req,res) => {
-    res.send(getAllProudacts());
+    res.send(getAllProudacts(req.query));
 })
 
 proudactsRouter.post('/',(req,res) => {

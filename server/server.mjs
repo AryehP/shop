@@ -21,10 +21,12 @@ app.use(bodyParser.json());
 // })
 
 // app.get('/api/categories',async (req,res) => {
+  
 //     const result = await fetch('https://fakestoreapi.com/products/categories');
 //     const json = await(result.json());
 //     res.send(json);
 // })
+
 app.use('/api',appRouter);
 
 app.listen(port, hostname, () => {
