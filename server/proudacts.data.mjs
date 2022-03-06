@@ -2,8 +2,26 @@ import { getRandpmeId } from "./Utilis.mjs";
 
 let produacts = [];
 
-export function getAllProudacts(){
-    return produacts;
+export function getAllProudacts(filterObj){
+
+    let result = produacts;
+
+    if(filterObj.title){
+
+        const reg = new RegExp(filterObj.title, "i");
+        result = result.filter(proudact => reg.test(proudact.title));
+
+    }
+
+    if(filterObj.price_lt){
+        result = result.filter(proudact => proudact.price < filterObj.price_lt);
+    }
+
+    if(filterObj.price_gt){
+        result = result.filter(proudact => proudact.price > filterObj.price_gt);
+    }
+    
+    return result;
 }
 
 export function addNewProudact(newProudact){
